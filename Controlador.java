@@ -57,7 +57,7 @@ public class Controlador {
                     }
                     break;
 
-                case 3:
+                    case 3:
                     System.out.println("Ingrese la implementación de listas a usar"); 
                     System.out.println("1. Simplemente encadenada");
                     System.out.println("2. Doblemente encadenada");
@@ -71,6 +71,14 @@ public class Controlador {
                             InfixConverter singlyLinkedListConverter = SimpleConverte.createConverter();
                             String postfixExpressionSinglyLinkedList = singlyLinkedListConverter.convert(infixExpressionSinglyLinkedList);
                             System.out.println("Expresión postfija con Lista simplemente encadenada: " + postfixExpressionSinglyLinkedList);
+                            
+                            Calculator calculator31 = Calculator.getInstance();
+                            try {
+                                int result = calculator31.evaluatePostfix(postfixExpressionSinglyLinkedList);
+                                System.out.println("Resultado: " + result);
+                            } catch (IllegalArgumentException e) {
+                                System.out.println("Error: " + e.getMessage());
+                            }
                             break; 
                         case 2: 
                             // Aquí se selecciona la implementación de la lista (Doblemente encadenada)
@@ -79,12 +87,22 @@ public class Controlador {
                             InfixConverter doublyLinkedListConverter = DoubleConverte.createConverter();
                             String postfixExpressionDoublyLinkedList = doublyLinkedListConverter.convert(infixExpressionDoublyLinkedList);
                             System.out.println("Expresión postfija con Lista doblemente encadenada: " + postfixExpressionDoublyLinkedList);
+                            
+                            // Evaluación de la expresión postfix
+                            Calculator calculator32 = Calculator.getInstance();
+                            try {
+                                int result = calculator32.evaluatePostfix(postfixExpressionDoublyLinkedList);
+                                System.out.println("Resultado: " + result);
+                            } catch (IllegalArgumentException e) {
+                                System.out.println("Error: " + e.getMessage());
+                            }
                             break;
                         default: 
                             System.out.println("Ingrese una opción válida");
                             break; 
                     }
-                    break; 
+                    break;
+                
                 case 4: 
                     continuar = false; 
                     break;
