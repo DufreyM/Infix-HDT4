@@ -8,7 +8,7 @@ public class Vector implements InfixConverter {
             char c = infixExpression.charAt(i);
             if (Character.isLetterOrDigit(c)) {
                 postfix.append(c);
-                // Agrega un espacio después de cada operando para separarlo correctamente
+               
                 if (i + 1 < infixExpression.length() && !Character.isLetterOrDigit(infixExpression.charAt(i + 1))) {
                     postfix.append(" ");
                 }
@@ -16,22 +16,22 @@ public class Vector implements InfixConverter {
                 stack.push(c);
             } else if (c == ')') {
                 while (!stack.isEmpty() && stack.peek() != '(') {
-                    postfix.append(stack.pop()).append(" "); // Agrega un espacio después de cada operador
+                    postfix.append(stack.pop()).append(" "); 
                 }
                 stack.pop(); // Pop '('
             } else {
                 while (!stack.isEmpty() && precedence(c) <= precedence(stack.peek())) {
-                    postfix.append(stack.pop()).append(" "); // Agrega un espacio después de cada operador
+                    postfix.append(stack.pop()).append(" "); 
                 }
                 stack.push(c);
             }
         }
     
         while (!stack.isEmpty()) {
-            postfix.append(stack.pop()).append(" "); // Agrega un espacio después de cada operador
+            postfix.append(stack.pop()).append(" "); 
         }
     
-        return postfix.toString().trim(); // Elimina cualquier espacio adicional alrededor de la expresión
+        return postfix.toString().trim(); 
     }
     
     private int precedence(char op) {

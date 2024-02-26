@@ -66,12 +66,20 @@ public class Controlador {
                     switch(implementacionlista){
                         case 1: 
                             // Aquí se selecciona la implementación de la lista (Simplemente encadenada)
-
+                            System.out.println("Ingrese la expresión infija a convertir:");
+                            String infixExpressionSinglyLinkedList = scanner.nextLine();
+                            InfixConverter singlyLinkedListConverter = SimpleConverte.createConverter();
+                            String postfixExpressionSinglyLinkedList = singlyLinkedListConverter.convert(infixExpressionSinglyLinkedList);
+                            System.out.println("Expresión postfija con Lista simplemente encadenada: " + postfixExpressionSinglyLinkedList);
                             break; 
                         case 2: 
                             // Aquí se selecciona la implementación de la lista (Doblemente encadenada)
-
-                            break; 
+                            System.out.println("Ingrese la expresión infija a convertir:");
+                            String infixExpressionDoublyLinkedList = scanner.nextLine();
+                            InfixConverter doublyLinkedListConverter = DoubleConverte.createConverter();
+                            String postfixExpressionDoublyLinkedList = doublyLinkedListConverter.convert(infixExpressionDoublyLinkedList);
+                            System.out.println("Expresión postfija con Lista doblemente encadenada: " + postfixExpressionDoublyLinkedList);
+                            break;
                         default: 
                             System.out.println("Ingrese una opción válida");
                             break; 

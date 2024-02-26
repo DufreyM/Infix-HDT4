@@ -1,6 +1,9 @@
-public interface Node<T> {
-    T getData();
-    void setData(T data);
-    Node<T> getNext();
-    void setNext(Node<T> next);
+class Node<T> {
+    T data;
+    Node<T> next;
+
+    public Node(T data) {
+        this.data = data;
+        this.next = null;
+    }
 }
