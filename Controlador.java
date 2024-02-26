@@ -28,12 +28,16 @@ public class Controlador {
 
             switch(opcion){
                 case 1: 
-                    // Aquí se selecciona la implementación de la pila (ArrayList)
+                    // Implementación con ArrayList
                     
                     break;
                 case 2:
-                    // Aquí se selecciona la implementación de la pila (Vector)
-                   
+                    // Implementación con Vector
+                    System.out.println("Ingrese la expresión infija a convertir:");
+                    String infixExpression = scanner.nextLine();
+                    InfixConverter vectorConverter = ConverterF.createConverter();
+                    String postfixExpression = vectorConverter.convert(infixExpression);
+                    System.out.println("Expresión postfija: " + postfixExpression);
                     break; 
                 case 3:
                     System.out.println("Ingrese la implementación de listas a usar"); 
