@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 
 public class ArrayListStack<T> implements InfixConverter {
     @Override
@@ -8,17 +8,17 @@ public class ArrayListStack<T> implements InfixConverter {
 
         for (char c : infixExpression.toCharArray()) {
             if (Character.isLetterOrDigit(c)) {
-                postfix.append(c);
+                postfix.append(c).append(" ");
             } else if (c == '(') {
                 stack.push(c);
             } else if (c == ')') {
                 while (!stack.isEmpty() && stack.peek() != '(') {
-                    postfix.append(stack.pop());
+                    postfix.append(stack.pop()).append(" ");
                 }
                 stack.pop();
             } else {
                 while (!stack.isEmpty() && precedence(c) <= precedence(stack.peek())) {
-                    postfix.append(stack.pop());
+                    postfix.append(stack.pop()).append(" ");
                 }
                 stack.push(c);
             }
@@ -44,33 +44,4 @@ public class ArrayListStack<T> implements InfixConverter {
         }
     }
 
-    private static class Stack<T> {
-        private ArrayList<T> data;
-
-        public Stack() {
-            data = new ArrayList<>();
-        }
-
-        public void push(T item) {
-            data.add(item);
-        }
-
-        public T pop() {
-            if (isEmpty()) {
-                throw new IllegalStateException("La pila está vacía");
-            }
-            return data.remove(data.size() - 1);
-        }
-
-        public T peek() {
-            if (isEmpty()) {
-                throw new IllegalStateException("La pila está vacía");
-            }
-            return data.get(data.size() - 1);
-        }
-
-        public boolean isEmpty() {
-            return data.isEmpty();
-        }
-    }
 }
