@@ -1,3 +1,6 @@
+/**
+ * Clase que representa una lista simplemente enlazada.
+ */
 public class SinglyLinkedList<T> {
     public Node<T> head;
 

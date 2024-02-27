@@ -1,46 +1,57 @@
 public class DoubleList implements InfixConverter {
+    /**
+     * Convierte una expresión en notación infix a notación postfix.
+     * @param infixExpression la expresión en notación infix a convertir
+     * @return la expresión en notación postfix
+     */
     @Override
     public String convert(String infixExpression) {
         StringBuilder postfix = new StringBuilder();
         DoublyLinkedList<Character> stack = new DoublyLinkedList<>();
-        boolean spaceNeeded = false; // Variable para rastrear si se necesita insertar un espacio
+        boolean spaceNeeded = false;
 
         for (char c : infixExpression.toCharArray()) {
             if (Character.isLetterOrDigit(c)) {
                 postfix.append(c);
-                spaceNeeded = true; // Indicar que se necesita un espacio después de un operando
+                spaceNeeded = true;
             } else if (c == '(') {
                 if (spaceNeeded) {
-                    postfix.append(" "); // Insertar un espacio antes de un '(' si es necesario
+                    postfix.append(" ");
                 }
                 stack.insert(c);
             } else if (c == ')') {
                 while (!stack.isEmpty() && stack.head.data != '(') {
-                    postfix.append(" "); // Insertar un espacio antes de cada operador
+                    postfix.append(" ");
                     postfix.append(stack.delete());
                 }
-                stack.delete(); // Remove the '('
+                stack.delete();
             } else {
                 while (!stack.isEmpty() && precedence(c) <= precedence(stack.head.data)) {
-                    postfix.append(" "); // Insertar un espacio antes de cada operador
+                    postfix.append(" ");
                     postfix.append(stack.delete());
                 }
                 if (spaceNeeded) {
-                    postfix.append(" "); // Insertar un espacio antes de un operador si es necesario
+                    postfix.append(" ");
                 }
                 stack.insert(c);
-                spaceNeeded = false; // Restablecer spaceNeeded después de insertar un operador
+                spaceNeeded = false;
             }
         }
 
         while (!stack.isEmpty()) {
-            postfix.append(" "); // Insertar un espacio antes de cada operador
+            postfix.append(" ");
             postfix.append(stack.delete());
         }
 
-        return postfix.toString().trim(); // Elimina cualquier espacio adicional alrededor de la expresión
+        return postfix.toString().trim();
     }
 
+    /**
+     * Devuelve la precedencia del operador dado.
+     *
+     * @param op el operador
+     * @return la precedencia del operador
+     */
     private int precedence(char op) {
         switch (op) {
             case '+':

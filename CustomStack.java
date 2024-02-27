@@ -1,3 +1,6 @@
+/**
+ * Clase que representa un Stack personalizado.
+ */
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
@@ -27,4 +30,6 @@ public class CustomStack<T> {
     public int size() {
         return stack.size();
     }
+
+    
 }

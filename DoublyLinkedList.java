@@ -1,4 +1,7 @@
-class DoublyLinkedList<T> {
+/**
+ * Clase que representa una lista doblemente enlazada.
+ */
+public class DoublyLinkedList<T> {
     public DoublyNode<T> head;
     public DoublyNode<T> tail;
 

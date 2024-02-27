@@ -1,6 +1,9 @@
+/**
+ * Clase que representa un nodo en un Stack.
+ */
 import java.util.ArrayList;
 
-class Stack<T> {
+public class Stack<T> {
     private ArrayList<T> data;
 
     public Stack() {

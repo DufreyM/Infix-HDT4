@@ -1,3 +1,7 @@
+/**
+ * La clase Controlador representa el programa principal
+ * Se muestra el menú al usuario y ejecuta las operaciones seleccionadas
+ */
 import java.util.Scanner;
 
 public class Controlador {
@@ -16,6 +20,9 @@ public class Controlador {
         System.out.println("4. Salir del programa.");
     }
 
+    /**
+     * Ejecuta el programa, mostrando el menú y realizando las operaciones seleccionadas por el usuario.
+     */
     public void ejecutar(){
         boolean continuar = true; 
 
@@ -65,7 +72,6 @@ public class Controlador {
                     scanner.nextLine();
                     switch(implementacionlista){
                         case 1: 
-                            // Aquí se selecciona la implementación de la lista (Simplemente encadenada)
                             System.out.println("Ingrese la expresión infija a convertir:");
                             String infixExpressionSinglyLinkedList = scanner.nextLine();
                             InfixConverter singlyLinkedListConverter = SimpleConverte.createConverter();
@@ -81,14 +87,12 @@ public class Controlador {
                             }
                             break; 
                         case 2: 
-                            // Aquí se selecciona la implementación de la lista (Doblemente encadenada)
                             System.out.println("Ingrese la expresión infija a convertir:");
                             String infixExpressionDoublyLinkedList = scanner.nextLine();
                             InfixConverter doublyLinkedListConverter = DoubleConverte.createConverter();
                             String postfixExpressionDoublyLinkedList = doublyLinkedListConverter.convert(infixExpressionDoublyLinkedList);
                             System.out.println("Expresión postfija con Lista doblemente encadenada: " + postfixExpressionDoublyLinkedList);
                             
-                            // Evaluación de la expresión postfix
                             Calculator calculator32 = Calculator.getInstance();
                             try {
                                 int result = calculator32.evaluatePostfix(postfixExpressionDoublyLinkedList);

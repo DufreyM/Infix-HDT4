@@ -1,3 +1,6 @@
+/**
+ * Clase que representa un nodo en una lista doblemente enlazada.
+ */
 public class DoublyNode<T> {
     T data;
     DoublyNode<T> prev;
